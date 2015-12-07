@@ -6,12 +6,19 @@
 		{js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}
 		(document,"script","twitter-wjs");
 
+	  /*
+		var news_item_number = 1;
+      	console.log(rss_feed);
+        $('#news-content').append('<div class ="col-sm-9 offset-3 text-left" id= "description_div' + news_item_number + '"');
+	  */
 		
-	  $(document).ready(function()
+		
+	// rss feed for bbc news -->	
+	  $(document).ready(function() 
       {
         $.ajax({
           type: "GET",
-          url: "rss_proxy_bbc.php",
+          url: "scripts/rss_bbc.php",
           dataType: "xml",
           cache: false,
           success: parse_rss
@@ -21,7 +28,7 @@
       function parse_rss(rss_feed)
       {
       	console.log(rss_feed);
-        $('#output').append('<select>');
+        $('#news-content').append('<select>');
         $(rss_feed).find("item").each(function()
         {
           $('select').append('<option value="' + 

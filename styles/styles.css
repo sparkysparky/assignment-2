@@ -1,0 +1,31 @@
+	.navbar-right button, .navbar-right input /* used to center the  button and search bar in the middle of the navbar*/
+	{
+		margin-top : 8px;
+	}
+	
+	#description_div { 
+        width: auto;
+        height: 100px;
+        background-color: #EED;
+        border: 1px solid #CCC;
+        padding: 10px;
+      }
+
+    #image_div { 
+        width: 25%;
+        height: 100%;
+        float: left;
+        display: inline;
+      }
+
+    text_div { 
+        width: 75%;
+        height: 100%;
+        float: right;
+        display: inline;
+      }
+
+    .title_large {
+      text-transform: uppercase;
+      font-weight: bold;
+      }
