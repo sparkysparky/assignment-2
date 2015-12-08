@@ -22,13 +22,13 @@ $urlpicker = array('http://feeds.bbci.co.uk/news/rss.xml?edition=uk',
 					'http://feeds.bbci.co.uk/news/science_and_environment/rss.xml',
 					'http://feeds.bbci.co.uk/news/entertainment_and_arts/rss.xml',
 					'http://feeds.bbci.co.uk/news/video_and_audio/news_front_page/rss.xml?edition=uk',
-					'http://www.theguardian.com/uk/rss',
+					'http://www.theguardian.com/tone/news/rss',
 					'http://www.theguardian.com/world/rss',
 					'http://www.theguardian.com/politics/rss',
 					'http://www.theguardian.com/uk/technology/rss',
 					'http://www.theguardian.com/uk/environment/rss',
 					'http://www.theguardian.com/uk/culture/rss',
-					'xxxxxxxxxxxxxx',				
+					'http://www.theguardian.com/uk/rss',				
 				   );
 $urlvalue = $_GET["item"];
 $url = $urlpicker[$urlvalue];
