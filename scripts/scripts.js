@@ -31,6 +31,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         $('#news-content').append('<select>');
         $(rss_feed).find("item").each(function()
         {
@@ -69,6 +70,8 @@
 =======
 >>>>>>> parent of d159955... Revert "finished for tonight"
 		
+=======
+>>>>>>> parent of ed3c271... finished for tonight
 		$(rss_feed).find("item").each(function()
 		{	
 			$('#news-content').append('<div class="col-md-12"><div class="news-image"> ' +
