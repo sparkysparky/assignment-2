@@ -29,6 +29,11 @@
         width: 100%;
         height: auto;
       }
+	  
+	  #news-content .col-md-12{
+		  padding-bottom:0px;
+	  }
+	  
     .title_large {
       text-transform: uppercase;
       font-weight: bold;
