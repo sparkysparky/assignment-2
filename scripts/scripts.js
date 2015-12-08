@@ -21,24 +21,33 @@
           url: "scripts/rss_bbc.php",
           dataType: "xml",
           cache: false,
-          success: parse_rss
+          success: parse_rss_bbc
         });
-      });
-
-      function parse_rss(rss_feed)
+    });
+      function parse_rss_bbc(rss_feed)
       {
       	console.log(rss_feed);
+		$('#news-content').empty();
 		$(rss_feed).find("item").each(function()
 		{	
-			$('#news-content').append('<div class="col-md-12"><div class="news-image"> ' +
+			$('#news-content').append('<div class="col-md-12">' 
+			+ '<div class = "news-text"><p class = "title_large">' + $(this).find('title').text() + '</p>'
+			+ '<p>' + $(this).find('description').text() + '<br>' + $(this).find('pubDate').text() + ' </p>'
+			+ '<p>' + '<a href="'+  $(this).find('guid').text() + '">' + $(this).find('guid').text() +' </p>'
+			+ '</div></div>'
+			); 		
+		});
+	   }
+	   
+	   /*
+	   $('#news-content').append('<div class="col-md-12"><div class="news-image"> ' +
 			'<img src= "' + $(this).find("thumbnail").next().attr("url") + '"></div>' 
 			+ '<div class = "news-text"><p class = "title_large">' + $(this).find('title').text() + '</p>'
 			+ '<p>' + $(this).find('description').text() + '<br>' + $(this).find('pubDate').text() + ' </p>'
 			+ '<p>' + '<a href="'+  $(this).find('guid').text() + '">' + $(this).find('guid').text() +' </p>'
 			+ '</div></div>'
-			); 
-		});
-	   }
+			); 	
+			*/
 	   
 	   //tabs functionality
 	   
