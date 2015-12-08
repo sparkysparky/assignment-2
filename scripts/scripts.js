@@ -10,6 +10,9 @@
 	  $(document).ready(function() 
       {
         $("#guardiantwitter").hide();
+		$("#helper").hide();
+		
+		
         $.ajax({
           type: "GET",
           url: "scripts/rss_picker.php",
@@ -18,6 +21,10 @@
           cache: false,
           success: parse_rss_bbc
         });
+		
+		$("#helpbutton").click(function(){
+			$("#helper").toggle();
+		});
     });
 	
 	//function ajax
@@ -41,7 +48,7 @@
 		{
 			$("#bbctwitter").hide();
 			$("#guardiantwitter").show();
-			var newsitem = 6;
+			var newsitem = 7;
 			$.ajax({
 			type: "GET",
 			url: "scripts/rss_picker.php",
@@ -82,3 +89,9 @@
 			); 		
 		});
 	   }
+	   
+
+	   
+	   
+
+	   
