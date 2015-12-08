@@ -29,6 +29,7 @@
       {
       	console.log(rss_feed);
 <<<<<<< HEAD
+<<<<<<< HEAD
         $('#news-content').append('<select>');
         $(rss_feed).find("item").each(function()
         {
@@ -62,6 +63,8 @@
        $("#text_div").append("<p>" + item_pubDate + "</p>");
      }  
 =======
+=======
+>>>>>>> parent of d159955... Revert "finished for tonight"
 		
 		$(rss_feed).find("item").each(function()
 		{	
