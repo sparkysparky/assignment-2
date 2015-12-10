@@ -2,38 +2,15 @@
 	{
 		margin-top : 8px;
 	}
-	
-	#news-content{
-		width : 100%;
-		height : auto;
-		padding: 10px;
-	}
-	
+		
 	#news-content .col-md-12{
 		background-color: #EED;
         border: 1px solid #CCC;
         padding: 10px;
 		margin : 5px;
 	}
-	
-	 .news-image { 
-        width: 10%;
-        height: 100%;
-	 }
-	 
-	 .news-image img{
-		float : left;
-	}
-	
-	.news-text {	
-        width: 100%;
-        height: auto;
-      }
-	  
-	  #news-content .col-md-12{
-		  padding-bottom:0px;
-	  }
-	  
+
+  
     .title_large {
       text-transform: uppercase;
       font-weight: bold;

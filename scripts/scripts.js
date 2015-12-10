@@ -14,97 +14,91 @@
 		$("#helpbutton").click(function(){
 			$("#helper").toggle();
 		});
-		ajaxbbc(0);
+		ajax(0, parse_rss_bbc);//once the document is ready gets the home bbc feed 
     });
 	
 	 $(document).on( 'shown.bs.tab', 'a[data-toggle="tab"]', function(e)
 		{
-			var newssource = 	$('#news-source').find("li.active").find("a").attr('href');
-			var newssubsource = $('#news-subsource').find("li.active").find("a").attr('href');
-			switch (newssource){
-				case "Newscontent1" :
-					switch (newssubsource){
-						case "newssubcontent1":						
-						ajaxbbc(0);
+			getrss(); // adds the getrss function to all items with data-toggle="tab" 
+        });
+		
+		function getrss()// checks the current open tabs and uses the information to select the correct rss feed to show
+		{
+			var newssource = 	$('#news-source').find("li.active").find("a").attr('href'); //gets the href of current active news source nav
+			var newsscategory = $('#news-subsource').find("li.active").find("a").attr('href'); // gets the href of the current active new category tab tab
+			switch (newssource){ //takes the current active nav bbc or guardian 
+				case "BBCnews" :
+					switch (newsscategory){//selects which rss feed to run based on the  which news 
+						case "GeneralNews":						
+						ajax(0, parse_rss_bbc);
 						break;
-						case "newssubcontent2":
-						ajaxbbc(1);
+						case "World":
+						ajax(1, parse_rss_bbc);
 						break;
-						case "newssubcontent3":
-						ajaxbbc(2);
+						case "Politics":
+						ajax(2, parse_rss_bbc);
 						break;
-						case "newssubcontent4":
-						ajaxbbc(3);
+						case "Technology":
+						ajax(3, parse_rss_bbc);
 						break;
-						case "newssubcontent5":
-						ajaxbbc(4);
+						case "Science":
+						ajax(4, parse_rss_bbc);
 						break;
-						case "newssubcontent6":
-						ajaxbbc(5);
+						case "Entertainment":
+						ajax(5, parse_rss_bbc);
 						break;
-						case "newssubcontent7":
-						ajaxbbc(6);
+						case "MostPopular":
+						ajax(6, parse_rss_bbc);
 						break;
 					}						
 					break;
-				case "Newscontent2":
+				case "GuardianNews":
 				newsitem = 1;
-					switch (newssubsource){
-						case "newssubcontent1":			
-						ajaxguardian(7);
+					switch (newsscategory){
+						case "GeneralNews":			
+						ajax(7, parse_rss_guardian);
 						break;
-						case "newssubcontent2":
-						ajaxguardian(8);
+						case "World":
+						ajax(8, parse_rss_guardian);
 						break;
-						case "newssubcontent3":
-						ajaxguardian(9);
+						case "Politics":
+						ajax(9, parse_rss_guardian);
 						break;
-						case "newssubcontent4":
-						ajaxguardian(10);
+						case "Technology":
+						ajax(10, parse_rss_guardian);
 						break;
-						case "newssubcontent5":
-						ajaxguardian(11);
+						case "Science":
+						ajax(11, parse_rss_guardian);
 						break;
-						case "newssubcontent6":
-						ajaxguardian(12);
+						case "Entertainment":
+						ajax(12, parse_rss_guardian);
 						break;
-						case "newssubcontent7":
-						ajaxguardian(13);
+						case "MostPopular":
+						ajax(13, parse_rss_guardian);
 						break;
 					}
 					break;
 			}
-        });
-		
-		function ajaxbbc(newsitem1){
-			$("#bbctwitter").show();
-			$("#guardiantwitter").hide();
-			$.ajax({
-			type: "GET",
-			url: "scripts/rss_picker.php",
-			data: {item : newsitem1},
-			dataType: "xml",
-			cache: false,
-			success: parse_rss_bbc	
-        });	
+			
 		}
 		
-		function ajaxguardian(newsitem1){
-			$("#bbctwitter").hide();
-			$("#guardiantwitter").show();
-			$.ajax({
-			type: "GET",
-			url: "scripts/rss_picker.php",
-			data: {item : newsitem1},
-			dataType: "xml",
-			cache: false,
-			success: parse_rss_guardian	
-        });	
-		}
 
+		function ajax(newsitem, parser){
+			$.ajax({
+			type: "GET",
+			url: "scripts/rss_picker.php",
+			data: {rssfeed : newsitem},
+			dataType: "xml",
+			cache: false,
+			success: parser
+        });	
+		}
+		
 		
       function parse_rss_bbc(rss_feed)
       {
+		$("#bbctwitter").show();
+		$("#guardiantwitter").hide();
       	console.log(rss_feed);
 		$('#news-content').empty();
 		$(rss_feed).find("item").each(function()
@@ -120,14 +114,16 @@
 	   
 	  function parse_rss_guardian(rss_feed)
       {
+		$("#bbctwitter").hide();
+		$("#guardiantwitter").show();
       	console.log(rss_feed);
 		$('#news-content').empty();
 		$(rss_feed).find("item").each(function()
 		{	
 			$('#news-content').append('<div class="col-md-12">' 
 			+ '<div class = "news-text"><p class = "title_large">' + $(this).find('title').text() + '</p>'
-			+ $(this).find('description').text() + '<br>' + $(this).find('pubDate').text() 
-			+ '<p></p></div></div>'
+			+ $(this).find('description').first().text() + '</p><p>' + $(this).find('pubDate').text() 
+			+ '</p></div></div>'
 			);
 		});
 	   }

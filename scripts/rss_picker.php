@@ -21,7 +21,7 @@ $urlpicker = array('http://feeds.bbci.co.uk/news/rss.xml?edition=uk',
 					'http://feeds.bbci.co.uk/news/technology/rss.xml',
 					'http://feeds.bbci.co.uk/news/science_and_environment/rss.xml',
 					'http://feeds.bbci.co.uk/news/entertainment_and_arts/rss.xml',
-					'http://feeds.bbci.co.uk/news/video_and_audio/news_front_page/rss.xml?edition=uk',
+					'http://feeds.bbci.co.uk/news/uk/rss.xml',
 					'http://www.theguardian.com/tone/news/rss',
 					'http://www.theguardian.com/world/rss',
 					'http://www.theguardian.com/politics/rss',
@@ -31,7 +31,7 @@ $urlpicker = array('http://feeds.bbci.co.uk/news/rss.xml?edition=uk',
 					'http://www.theguardian.com/uk/rss',				
 				   );
 				   
-$urlvalue = $_GET["item"];
+$urlvalue = $_GET["rssfeed"];
 $url = $urlpicker[$urlvalue];
 $str = file_get_contents($url);
 echo $str;
