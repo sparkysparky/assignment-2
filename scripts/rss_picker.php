@@ -15,7 +15,7 @@
 	  return $ret;
 }
 
-$urlpicker = array('http://feeds.bbci.co.uk/news/rss.xml?edition=uk',
+$urlpicker = array('http://feeds.bbci.co.uk/news/rss.xml',
 					'http://feeds.bbci.co.uk/news/world/rss.xml',
 					'http://feeds.bbci.co.uk/news/politics/rss.xml',
 					'http://feeds.bbci.co.uk/news/technology/rss.xml',
