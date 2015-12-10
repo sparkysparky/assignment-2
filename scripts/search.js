@@ -17,11 +17,12 @@
 					+ '<div class = "news-text"><p class = "title_large">' + $(this).find('title').text() + '</p>'
 					+ $(this).find('description').first().text() + '</p><p>' + $(this).find('pubDate').text() 
 					+ '</p></div></div>'
-					); // if the search matchs anything in the rss feed outputs it
+					); // if the search matchs anything in the rss feed outputs it using the append function
 				}  
 			});
 			$("#searchresult").empty(); // clears the search result paragraph
-			$("#searchresult").append("<strong> Found " + query + " in " + num_matching_articles + " articles</strong>");	// takes the empty search result paragraph and adds
-																														//in the number of articles matched
+			$("#searchresult").append("<strong> Search results for ' " + query + " '. Found " + num_matching_articles + " articles which contain this value</strong>");	
+										// takes the empty search result paragraph and adds
+										//in the number of articles matched
 	   }
 

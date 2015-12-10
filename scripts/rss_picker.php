@@ -29,10 +29,10 @@ $urlpicker = array('http://feeds.bbci.co.uk/news/rss.xml',
 					'http://www.theguardian.com/uk/environment/rss',
 					'http://www.theguardian.com/uk/culture/rss',
 					'http://www.theguardian.com/uk/rss',				
-				   );
+				   ); // array of rss feeds
 				   
-$urlvalue = $_GET["rssfeed"];
-$url = $urlpicker[$urlvalue];
+$urlvalue = $_GET["rssfeed"]; //the rssfeed is sent with the ajax get request and used to select the rss feed
+$url = $urlpicker[$urlvalue]; //used to select the correct rss feed 
 $str = file_get_contents($url);
 echo $str;
 ?>

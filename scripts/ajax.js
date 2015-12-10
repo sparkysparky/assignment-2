@@ -1,4 +1,17 @@
-function getrss()// checks the current open tabs and uses the information to select the correct rss feed to show
+		
+		function ajax(newsitem){ //when running ajax news item is entered as a number which is passed to the rss_picker the number is used to select the related rss feed
+			$.ajax({
+				type: "GET",
+				url: "scripts/rss_picker.php",
+				data: {rssfeed : newsitem},
+				dataType: "xml",
+				cache: false,
+				success: parse_rss // on success runs the parse_rss function which adds the content found to the news content div
+			});	
+		}
+
+		
+		function getrss()// checks the current open tabs and uses the information to select the correct rss feed to show
 		{
 			var newssource = 	$('#news-source').find("li.active").find("a").attr('href'); //gets the href of current active news source nav
 			var newsscategory = $('#news-subsource').find("li.active").find("a").attr('href'); // gets the href of the current active new category tab tab
@@ -6,7 +19,7 @@ function getrss()// checks the current open tabs and uses the information to sel
 				case "BBCnews" :
 					switch (newsscategory){//selects which rss feed to run based on the  which news sourde tab and news category tabs are active 
 						case "GeneralNews":						
-						ajax(0);
+						ajax(0);	//opens rss feed for bbc general news
 						break;
 						case "World":
 						ajax(1);
@@ -55,16 +68,4 @@ function getrss()// checks the current open tabs and uses the information to sel
 					}
 					break;
 			}			
-		}
-		
-
-		function ajax(newsitem){
-			$.ajax({
-			type: "GET",
-			url: "scripts/rss_picker.php",
-			data: {rssfeed : newsitem},
-			dataType: "xml",
-			cache: false,
-			success: parse_rss_bbc
-        });	
 		}
